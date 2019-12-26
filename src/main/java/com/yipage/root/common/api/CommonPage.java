@@ -9,6 +9,7 @@ import java.util.List;
  * Created by root on 2019/4/19.
  */
 public class CommonPage<T> {
+
     private Integer pageNum;
     private Integer pageSize;
     private Integer totalPage;

@@ -29,6 +29,8 @@ public class UmsMemberController {
         return memberService.generateAuthCode(telephone);
     }
 
+
+
     @ApiOperation("判断验证码是否正确")
     @RequestMapping(value = "/verifyAuthCode", method = RequestMethod.POST)
     @ResponseBody
