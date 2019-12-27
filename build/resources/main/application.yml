@@ -1,0 +1,49 @@
+spring:
+  profiles:
+    active: sit
+  datasource:
+    druid:
+      initial-size: 5
+      min-idle: 10
+      max-active: 20
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        login-username: admin
+        login-password: 123456
+
+server:
+  port: 8080
+  jetty:
+      acceptors: 2
+      selectors: 4
+  tomcat:
+    min-spare-threads: 20
+    max-threads: 100
+  connection-timeout: 5000
+
+logging:
+  level:
+    com.yipage.root.dao: debug
+    com.yipage.root.mapper: debug
+    com.yipage.root.mbg.mapper: debug
+
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+# 自定义redis key
+redis:
+  key:
+    prefix:
+      authCode: "portal:authCode:"
+    expire:
+      authCode: 60 # 验证码超期时间
+
+# 自定义jwt key
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头
